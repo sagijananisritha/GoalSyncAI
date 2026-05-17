@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: GoalSyncBackend
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/goalsync_db
+    username: goalsync
+    password: goalsync_password
+    driver-class-name: org.postgresql.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+app:
+  security:
+    jwt:
+      secret: "GoalSyncHackathonSuperSecretKeyForJwtGenerationDoNotShareInProduction12345"
+      expirationMs: 86400000 # 24 hours
+  ai:
+    gemini:
+      api-key: ${GEMINI_API_KEY:mock_key_for_hackathon}
